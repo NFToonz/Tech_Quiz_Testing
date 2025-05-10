@@ -1,7 +1,5 @@
 // Component test for the Quiz component
-import React from 'react';
-import { mount } from 'cypress/react';
-import {Quiz} from '../client/src/components/Quiz.js' ;
+import Quiz from '../../client/src/components/Quiz.js';
 
 describe ('Quiz component', () => {
    // Mock the fetch function
@@ -31,19 +29,19 @@ describe ('Quiz component', () => {
 
     // Test cases for the Quiz component - adds more
     it('renders the quiz component', () => {
-        mount(<Quiz />); // Mount the Quiz component in the test environment
+        cy.mount(<Quiz />); // Mount the Quiz component in the test environment
         cy.contains('Start Quiz').should('be.visible'); // Check if the "Start Quiz" button is visible
     });
 
     it('fetches quiz data and displays questions', () => {
-        mount(<Quiz />);
+        cy.mount(<Quiz />);
         cy.contains('Start Quiz').click(); // Simulate a click on the "Start Quiz" button
         cy.wait('@getQuiz'); // Wait for the quiz data to be fetched
         cy.contains('What is 2 + 2?').should('be.visible'); // Check if the first question is displayed
     });
 
     it('allows User to select an answer', () => {
-        mount(<Quiz />);
+        cy.mount(<Quiz />);
         cy.contains('Start Quiz').click(); // Simulate a click on the "Start Quiz" button
         cy.wait('@getQuiz'); // Wait for the quiz data to be fetched
         cy.contains('4').click(); // Simulate a click on the right answer
@@ -51,7 +49,7 @@ describe ('Quiz component', () => {
     } );
 
     it('shows the next question when the "Next" button is clicked', () => {
-        mount(<Quiz />);
+        cy.mount(<Quiz />);
         cy.contains('Start Quiz').click(); // Simulate a click on the "Start Quiz" button
         cy.wait('@getQuiz'); // Wait for the quiz data to be fetched
         cy.contains('4').click(); // Simulate a click on the right answer
