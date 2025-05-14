@@ -16,25 +16,29 @@ describe ('Quiz component', () => {
 
     it('fetches quiz data and displays questions', () => {
         cy.mount(<Quiz />);
-        cy.contains('Start Quiz').click(); // Simulate a click on the "Start Quiz" button
+        cy.get('button').contains('Start Quiz').click(); // Simulate a click on the "Start Quiz" button
         cy.wait('@getQuiz'); // Wait for the quiz data to be fetched
-        cy.contains('What is 2 + 2?').should('be.visible'); // Check if the first question is displayed
+        cy.get('h2').contains('What is 2 + 2?').should('be.visible'); // Check if the first question is displayed
     });
 
     it('allows User to select an answer', () => {
         cy.mount(<Quiz />);
-        cy.contains('Start Quiz').click(); // Simulate a click on the "Start Quiz" button
+        cy.get('button').contains('Start Quiz').click(); // Simulate a click on the "Start Quiz" button
         cy.wait('@getQuiz'); // Wait for the quiz data to be fetched
+        cy.contains('What is 2 + 2?').should('be.visible'); // Check if the first question is displayed
+        cy.get('.answer').should('have.length', 4); // Check if there are 4 answer options
         cy.contains('4').click(); // Simulate a click on the right answer
         cy.get('.selected').should('contain', '4'); // Check if the selected answer is highlighted
     } );
 
     it('shows the next question when the "Next" button is clicked', () => {
         cy.mount(<Quiz />);
-        cy.contains('Start Quiz').click(); // Simulate a click on the "Start Quiz" button
+        cy.get('button').contains('Start Quiz').click(); // Simulate a click on the "Start Quiz" button
         cy.wait('@getQuiz'); // Wait for the quiz data to be fetched
+        cy.contains('What is 2 + 2?').should('be.visible'); // Check if the first question is displayed
+        cy.get('.answer').should('have.length', 4); // Check if there are 4 answer options
         cy.contains('4').click(); // Simulate a click on the right answer
-        cy.contains('Next').click(); // Simulate a click on the "Next" button
+        cy.get('button').contains('Next').click(); // Simulate a click on the "Next" button
         cy.contains('What is the capital of France?').should('be.visible'); // Check if the second question is displayed
     }
     );}
