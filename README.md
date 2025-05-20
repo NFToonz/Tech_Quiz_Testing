@@ -1,7 +1,7 @@
 # Tech_Quiz_Testing
 Test Activity for Mod.19 
-Demo Video : https://drive.google.com/file/d/1wu4U9aWA1ynsqwCRlY6nL_45msmw1-h6/edit
-
+Demo Video : https://drive.google.com/file/d/1wu4U9aWA1ynsqwCRlY6nL_45msmw1-h6/view
+https://app.screencastify.com/v2/watch/szN1lTMYWumEVYcEwd1P
 Summary
 This challenge for Module 19 focuses on implementing automated testing using Cypress. The application under test generates randomized tech-related questions, allowing users to select and answer from multiple choices.
 
